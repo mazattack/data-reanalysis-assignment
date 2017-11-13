@@ -235,14 +235,15 @@ Finally I put together the summary table. I decided not to also include the subt
 ```{r constructing the summary table}
 iso2$Genus <-as.factor(iso2$Genus)
 iso2_g <- group_by(iso2, Site, Genus)
-sum_tot<- summarize(iso2_g, length(C13ap), mean(C13ap), sd(C13ap), length(O18ap), mean(O18ap), sd(O18ap))
+sum_tot<- summarize(iso2_g, length(C13ap), mean(C13ap, na.rm=T), sd(C13ap, na.rm=T), length(O18ap), mean(O18ap, na.rm=T), sd(O18ap, na.rm=T))
 
 tot_tot<-iso2%>%
   group_by(Genus)%>%
-  summarize(length(C13ap), mean(C13ap), sd(C13ap), length(O18ap), mean(O18ap), sd(O18ap))
+  summarize(length(C13ap), mean(C13ap, na.rm=T), sd(C13ap, na.rm=T), length(O18ap), mean(O18ap, na.rm=T), sd(O18ap, na.rm=T))
 tot_tot<-mutate(tot_tot, Site="Total")
 tot<-rbind.data.frame(sum_tot, tot_tot)
-tot
+require(knitr)
+kable(tot)#using knitr to ensure the entire table is visible in the html output
 ```
 
 Note the differences across these summary statistics compared to the table provided in the article (Table 2). 
