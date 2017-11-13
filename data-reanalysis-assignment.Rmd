@@ -1,5 +1,5 @@
 ---
-title: "Article analysis"
+title: "Reanalysis of Somerville et al. (2016):Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral"
 author: "Maria C. Codlin"
 date: "November 12, 2017"
 output: 
@@ -8,6 +8,7 @@ output:
     toc_depth: 4
     toc_float: true
 ---
+<img src="img/bunny.png" width="1000px"/>
 
 ##Introduction
 In this document, I outline the reanalyis of Somerville et al. (2016), who examine the evidence for captive management of leproids at Teotihuacan, one of the earliest and largest urban centers in the Americas. Somerville et al. (2016) analysed the carbon and oxygen stable isotopes from the bone apatite of archaeological specimens from two genera of lepoids, Lepus (hares), and Sylvilagus (cottontails). Carbon is used as a proxy for human impact on the diet of these animals: higher δ13C apatite ratios imply an larger component of the diet was made up by human cultivated C4 or CAM plants such as maize. They incorperate the stable carbon isotope analysis with stable oxygen isotope analysis, as δO18 apatite ratios can be used in this context as a proxy for local humidity, providing a measure of control over environmental changes that might have influence baseline signatures of δ13C. 
@@ -40,7 +41,7 @@ I read in the archaeological data (S1_table). In excel, I deleted any rows of no
 ```{r reading in the archaeological data}
 require(curl)
 require(dplyr)
-f <- curl("https://raw.githubusercontent.com/mazattack/Article-analysis/master/S2_Table.csv") #This is the archaeological data
+f <- curl("https://raw.githubusercontent.com/mazattack/data-reanalysis-assignment/master/S2_Table.csv") #This is the archaeological data.
 iso_total <- read.csv(f, header = TRUE, stringsAsFactors = FALSE, strip.white=TRUE)
 iso_total<-tbl_df(iso_total)
 head(iso_total)
@@ -49,7 +50,7 @@ str(iso_total)
 I did the same with the modern data. 
 ```{r readfile modern}
 
-f <- curl("https://raw.githubusercontent.com/mazattack/Article-analysis/master/S1_Table.csv") #This is the archaeological data
+f <- curl("https://raw.githubusercontent.com/mazattack/data-reanalysis-assignment/master/S1_Table.csv") #This is the archaeological data
 modern<-read.csv(f, header=TRUE, sep = ",",strip.white=TRUE, stringsAsFactors = FALSE) 
 
 modern<-tbl_df(modern)
